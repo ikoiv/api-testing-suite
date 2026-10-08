@@ -1,8 +1,8 @@
-# Local task API contract
+# Task API notes
 
 Health: `GET /health` returns `200 {"status":"ok"}` without authentication.
 
-All task endpoints require `Authorization: Bearer local-lab-token`. This is a public, local-only demo constant. Missing/incorrect values return `401 {"error":"Unauthorized"}`.
+All task endpoints require `Authorization: Bearer local-lab-token`. This token is just for the local demo. Missing/incorrect values return `401 {"error":"Unauthorized"}`.
 
 | Method | Path | Body | Success |
 | --- | --- | --- | --- |
@@ -16,4 +16,4 @@ Task: `{"id":1,"title":"Read a chapter","completed":false}`. IDs are positive in
 
 Errors return a JSON object with one `error` string. Malformed JSON: 400. Unrecognized route/resource: 404. Unsupported task method: 405. Payload over 8192 JavaScript string code units: 413. Unsupported media type: 415. Invalid fields: 422. Authentication is checked before parsing task payloads. State resets on server restart.
 
-The input-length and body-length rules are intentionally simple lab rules, not a production byte-limit implementation.
+The length limits count JavaScript string units, not bytes.
