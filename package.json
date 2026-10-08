@@ -1,0 +1,14 @@
+{
+  "name": "api-testing-suite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test --test-reporter=spec",
+    "test:coverage": "node --experimental-test-coverage --test",
+    "start": "node demo/server.js"
+  }
+}
