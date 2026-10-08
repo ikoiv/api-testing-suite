@@ -1,9 +1,12 @@
 name: API tests
+# Run on changes and allow a manual run from the Actions tab.
 on: [push, pull_request, workflow_dispatch]
+# These checks only need to read repository contents; no write token is necessary.
 permissions:
   contents: read
 jobs:
   test:
+    # Check compatibility with both supported Node versions, not only the local runtime.
     strategy:
       matrix:
         node: ['22', '24']
